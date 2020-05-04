@@ -1,0 +1,206 @@
+<ion-toolbar no-shadow class="header" color=" ">
+     
+  <ion-buttons slot="start" class="hide-sm-up">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+
+  <ion-button size="small" style="padding-left: 80px; margin-top: -25px;">Location</ion-button>
+
+<!-- <ion-title  style="padding-left: 80px;">Location</ion-title>
+-->
+
+  <ion-row slot="end" style="padding-right: 40px ; margin-top: -12px; ">
+    
+    <ion-col class="header-buttons" size="auto">
+      List your business
+    </ion-col>
+    <ion-col (click)="presentModal()"  class="header-buttons" size="auto">
+      Sign Up
+    </ion-col>
+    <ion-col (click)="presentModal()"  class="header-buttons" size="auto">
+      <fa-icon style="color: black;" [icon]="faUser"></fa-icon>
+      Login
+    </ion-col>
+  </ion-row>
+
+</ion-toolbar>
+<ion-toolbar class="no-shadow" color=" ">
+
+  <img style="margin-left: 40px; position: relative; padding-top: 10px ; padding-bottom: -10px;" src="../../assets/icon/logo3.png" alt="">
+
+<ion-row slot="end" style="padding-right: 40px;">
+  <ion-col>
+    <ion-row>
+      <ion-col style="padding-top: 8px;">
+        <fa-icon  style="position: absolute; padding-left: 10px; padding-top: 4px; size: 1px;" [icon]="searchIcon" ></fa-icon>
+        <input class="search" type="text" [value]=""  >
+      </ion-col>
+      <ion-col>
+        <ion-button size="small">Search</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+</ion-toolbar>
+<ion-content class="content">
+  <div class="content">
+    <ion-card>
+      <ion-grid>
+        <ion-row >
+          <ion-col >
+            <ion-item>
+              <ion-grid >
+                <ion-row >
+                  <ion-col style="height: 20px;" size='10'>
+                      <p style="font-size: 10px; color: #666666; font-weight: 700; letter-spacing: 1.2px;">BEAUTY SALON</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row >
+                  <ion-col>
+                    <h3 style="font-weight: 1000; letter-spacing: 1.2px;" >Looks Unisex Salon</h3>
+                    <fa-icon style="color: black;" [icon]="faMapMarkerAlt"></fa-icon>
+                    <span style="font-size: 12px; font-weight: 700; color: #666666; letter-spacing:1.2px ;padding-left: 15px;" >Central Market Lajpat Nagar 2, Lajpat Nagar 2  </span>
+                </ion-col>
+               
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <fa-icon style="color: black;" [icon]="faPhone" rotate='90'></fa-icon>
+                    <span style="padding-left: 10px; font-size: 14px; letter-spacing:1.2px ; font-weight: 700;">+91-9773517208</span>
+                </ion-col>
+              
+                </ion-row>
+                <ion-row >
+                  <ion-col>
+                    
+                </ion-col>
+              
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-col>
+          <ion-col size='7' >
+         
+            <ion-slides pager='true' [options]='slideOpts'>
+              <ion-slide>
+                <img src="../../assets/icon/salon1.jpg" style="width: 400px; height: 200px;">
+              </ion-slide>
+              <ion-slide>
+                <img src="../../assets/icon/salon2.jpg" style="width: 400px; height: 200px;">
+              </ion-slide>
+              <ion-slide>
+                <img src="../../assets/icon/salon3.jpg" style="width: 400px; height: 200px;">
+              </ion-slide>
+              <ion-slide>
+                <img src="../../assets/icon/salon4.jpg" style="width: 400px; height: 200px;">
+              </ion-slide>
+            </ion-slides>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      </ion-card><br><br>
+
+      <ion-card style="background-color: #f6f6f6;">
+        <div class="segment">
+        <ion-segment (ionChange)="segmentChanged($event)" value="Offers" >
+          <ion-segment-button value="Offers" >
+            <ion-label>All Offers</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="About">
+            <ion-label>About</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Photos">
+            <ion-label>Photos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <ion-grid>
+        <ion-row *ngIf = "value==='Offers'">
+          <ion-col >
+            <ion-item>
+              <ion-grid >
+                <ion-row>
+                  <ion-col size='10'>
+                      <p style="font-size: 12px;">5 People Availed</p>
+                  </ion-col>
+                
+                  <ion-col >
+                    <p style="font-size: 12px;">40% OFF</p>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <h4>Cash Vouchers worth 500</h4>
+                    <p style="font-size: 10px; margin-top: -5px;">No Cancellation Fee</p>
+                </ion-col>
+                <ion-col size='2'>
+                  <h4><span style="font-size: 16px; padding-right:5px ;"><del>₹500</del></span>₹200</h4>
+                </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <p>Validity till 1st March</p>
+                </ion-col>
+              
+                </ion-row>
+                <ion-row >
+                  <ion-col>
+                    <ion-button >Avail Now</ion-button>
+                </ion-col>
+              
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-col>
+          <ion-col size='4' >
+            <ion-card>
+              <ion-card-header style="background-color:#E0E0E0;">
+                <ion-card-title style=" text-align: center;">Your Orders</ion-card-title>
+              </ion-card-header>
+              <br><br>
+              <ion-card-content>
+               <p style="text-align: center;"> Your Offer List Is Empty<br> Please Add An Offer</p>
+              </ion-card-content>
+              <ion-row padding>
+                <ion-col>
+                    Total
+                </ion-col>
+                <ion-col size="2">
+                  ₹200
+                </ion-col>
+              </ion-row>
+              <br>
+              <ion-button color="danger" expand="block">
+                Confirm To Avail ->
+              </ion-button>
+              <ion-item-divider>
+
+              </ion-item-divider>
+            </ion-card>
+
+            <ion-card>
+              <ion-card-header>
+                <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+                <ion-card-title>Card Title</ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+                Keep close to Nature's heart... and break clear away, once in awhile,
+                and climb a mountain or spend a week in the woods. Wash your spirit clean.
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+        <ion-card-header  >
+         
+        </ion-card-header>
+        <ion-card-header *ngIf = "value==='About'" >
+          Javascript
+      </ion-card-header>
+        </ion-card>
+  </div>
+</ion-content>

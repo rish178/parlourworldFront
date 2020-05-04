@@ -1,0 +1,127 @@
+
+<ion-content  >
+
+ 
+  <ion-row  class="ion-no-padding" style="height: 100%;" >
+    <ion-col style="background-color:#6b459f; background-image: linear-gradient(to right, #f065a7 , #6b459f);">
+ 
+    </ion-col>
+    <ion-col *ngIf="common.registerController===false" size="10" style="padding: 40px;">
+      <h2 >Create A New Acccount</h2>
+      <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+        <ion-list formGroupName="name">
+        <ion-item style="padding-top: 10px;">
+     
+      
+        <ion-label class="label" position="floating">First Name </ion-label>
+        <ion-input style="font-family: Lato;" type="text" formControlName="firstName" inputmode="text"></ion-input>
+       
+    
+      </ion-item>
+      <div *ngFor="let error of errorMessages.firstName">
+        <ng-container *ngIf="firstName.hasError(error.type) && (firstName.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item style="padding-top: 10px;">
+     
+      
+        <ion-label class="label" position="floating">Last Name </ion-label>
+        <ion-input style="font-family: Lato;" type="text" formControlName="lastName" inputmode="text"></ion-input>
+       
+    
+      </ion-item>
+      <div *ngFor="let error of errorMessages.lastName">
+        <ng-container *ngIf="lastName.hasError(error.type) && (lastName.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      
+    </ion-list>
+     
+    
+
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Email</ion-label>
+        <ion-input style="font-family: Lato;" formControlName="email" inputmode="email"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.email">
+        <ng-container *ngIf="email.hasError(error.type) && (email.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Password</ion-label>
+        <ion-input style="font-family: Lato;"  formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.password">
+        <ng-container *ngIf="password.hasError(error.type) && (password.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Confirm Password</ion-label>
+        <ion-input style="font-family: Lato;"  formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Phone</ion-label>
+        <ion-input style="font-family: Lato;" formControlName="mobile" inputmode="phone"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.mobile">
+        <ng-container *ngIf="mobile.hasError(error.type) &&(mobile.dirty) ">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <br>
+      <ion-button type="submit" [disabled]="!registrationForm.valid" expand="block">
+        Sign Up 
+      </ion-button>
+    </form>
+    </ion-col>
+    
+
+
+    <ion-col *ngIf="common.registerController===true" size="10" style="padding: 40px;">
+      <h2 >Welcome Back </h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+  
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Email</ion-label>
+        <ion-input style="font-family: Lato;" formControlName="email" inputmode="email"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.email">
+        <ng-container *ngIf="email.hasError(error.type) && (email.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Password</ion-label>
+        <ion-input style="font-family: Lato;"  formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.password">
+        <ng-container *ngIf="password.hasError(error.type) && (password.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      
+      <!-- <div *ngFor="let error of errorMessages.password">
+        <ng-container *ngIf="password.hasError(error.type) && (password.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div> -->
+      <div style="text-align: end;">
+      <p  class="label" style="font-size: 10px; letter-spacing: 1.2px; color: #f94f52;">Forget password?</p>
+    </div>
+      <br>
+      <ion-button type="submit" [disabled]="!loginForm.valid" expand="block">
+        Log In
+      </ion-button>
+    </form>
+    <div style="text-align: center;">
+      <p class="label" style="font-size: 8px; letter-spacing: 1.2px;">DON'T HAVE AN ACCOUNT YET? <span style="font-size: 16px; color: #f94f52; cursor: pointer;" (click)="goToSignUp()">Sign Up</span> </p>
+    
+    </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "pentaTesting",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

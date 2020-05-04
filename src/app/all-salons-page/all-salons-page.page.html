@@ -1,0 +1,167 @@
+<ion-toolbar no-shadow class="header" color=" ">
+
+  <ion-buttons slot="start" class="hide-sm-up">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+
+  <!-- <ion-button size="small" style="padding-left: 80px; margin-top: -25px;">Location</ion-button> -->
+  
+  <ion-item style="padding-left: 80px; margin-top: -25px; width: 300px; color:#582C93;">
+    <ion-label > Select location</ion-label>
+    <ion-select cancelText="Nah" okText="Okay!">
+      <ion-select-option value="bacon">New Delhi</ion-select-option>
+      <ion-select-option value="olives">Jaipur</ion-select-option>
+      <ion-select-option value="xcheese">Chandigarh</ion-select-option>
+      <ion-select-option value="peppers">Gurugram</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+<!-- <ion-title  style="padding-left: 80px;">Location</ion-title>
+-->
+
+  <ion-row slot="end" style="padding-right: 40px ; margin-top: -12px; ">
+    
+    <ion-col class="header-buttons" size="auto">
+      List your business
+    </ion-col>
+    <ion-col (click)="presentModal()"  class="header-buttons" size="auto">
+      Sign Up
+    </ion-col>
+    <ion-col (click)="presentModal()"  class="header-buttons" size="auto">
+      <fa-icon style="color: black;" [icon]="faUser"></fa-icon>
+      Login
+    </ion-col>
+  </ion-row>
+
+</ion-toolbar>
+<ion-toolbar class="no-shadow" color=" ">
+
+  <img style="margin-left: 40px; position: relative; padding-top: 10px ; padding-bottom: -10px;" src="../../assets/icon/logo3.png" alt="">
+
+<ion-row slot="end" style="padding-right: 40px;">
+  <ion-col>
+    <ion-row>
+      <ion-col style="padding-top: 8px;">
+        <fa-icon  style="position: absolute; padding-left: 10px; padding-top: 4px; size: 1px;" [icon]="searchIcon" ></fa-icon>
+        <input class="search" type="text" [value]=""  >
+      </ion-col>
+      <ion-col>
+        <ion-button size="small">Search</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+</ion-toolbar>
+<ion-content>
+<div  class="content">
+  <ion-grid>
+    <ion-row>
+    <ion-col size=3>
+      <ion-card>
+        <ion-list>
+          <div style="margin-left: 15px; margin-top: 7px;">
+            <span style="font-size: 20px; color: #666666; font-weight: 900; letter-spacing: 1.2px;">Location</span><hr>
+          </div>
+          <ion-item lines="none" *ngFor="let entry of form">
+            <ion-label style="font-size: 10px; color: #666666; font-weight: 700; letter-spacing: 1.2px;">{{entry.val}}</ion-label>
+            <ion-checkbox  color="primary" slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+        <div *ngIf="toggle===true">
+          <input type="text">
+        </div>
+        <!-- <ion-select multiple="true" cancelText="Nah" okText="Okay!">
+          <ion-select-option value="bacon">Bacon</ion-select-option>
+          <ion-select-option value="olives">Black Olives</ion-select-option>
+          <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
+          <ion-select-option value="peppers">Green Peppers</ion-select-option>
+          <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
+          <ion-select-option value="onions">Onions</ion-select-option>
+          <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
+          <ion-select-option value="pineapple">Pineapple</ion-select-option>
+          <ion-select-option value="sausage">Sausage</ion-select-option>
+          <ion-select-option value="Spinach">Spinach</ion-select-option>
+        </ion-select> -->
+        <ion-item>
+         
+            <span style="font-size: 16px; color: #666666; font-weight: 900; letter-spacing: 1.2px;">Popular</span><hr>
+            <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+  
+            <span  style="font-size: 16px; color: #666666; font-weight: 900; letter-spacing: 1.2px;">Price(High to Low) </span>
+            <ion-checkbox slot="end"></ion-checkbox>
+           
+     
+        </ion-item>
+        <ion-item>
+
+          <span style="font-size: 16px; color: #666666; font-weight: 900; letter-spacing: 1.2px;">Price(Low to High)</span><hr>
+          <ion-checkbox slot="end"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+   
+        <span style="font-size: 16; color:#f47b58; font-weight: 900; letter-spacing: 1.2px;">Whats New !</span><hr>
+   <ion-checkbox slot="end"></ion-checkbox>
+    </ion-item>
+      </ion-card>  
+    </ion-col>
+    <ion-col>
+    <ion-row>
+      <ion-col (click)="goToSinglePage()" size="4" *ngFor="let entry of form">
+        <ion-card>
+          <div>
+          <img src = "../../assets/offer2.jpg" >
+        </div>
+        <ion-card-header>
+          <ion-card-title color="primary">Looks Salon</ion-card-title>
+          <ion-card-subtitle style="font-size: 10px; color: #666666; font-weight: 700; letter-spacing: 1.2px;">Expires on 2nd May</ion-card-subtitle>
+        
+        </ion-card-header>  
+          <ion-card-content>
+            <ion-card-title color="danger">50% Off Deal</ion-card-title>  
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <div>
+          <img src = "../../assets/offer2.jpg" >
+        </div>
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        
+        </ion-card-header>  
+          <ion-card-content>
+            This is content, without any paragraph or header tags,
+            within an ion-card-content element.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col >
+        <ion-card>
+          <div>
+          <img src = "../../assets/offer1.jpg" >
+        </div>
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        
+        </ion-card-header>  
+          <ion-card-content>
+            This is content, without any paragraph or header tags,
+            within an ion-card-content element.
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+      
+    </ion-row>
+  </ion-col>
+</ion-row>
+  </ion-grid>
+</div>
+</ion-content>

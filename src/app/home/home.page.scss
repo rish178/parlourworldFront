@@ -1,0 +1,51 @@
+.header-buttons{
+    font-size:x-small; 
+    color: #ee544f;
+    letter-spacing: .5px;
+    cursor: pointer;
+}
+
+
+.header{
+   background:  #f1f1f1;
+   height: 40px;
+  
+  }
+.header-buttons::after{
+    content: ' ';
+    border-left: 1px solid #999;
+    height: 15px;
+    right: 0;
+    top: 50%;
+    margin-left: 5px;
+    border-color: #ee544f;;
+  }
+
+.search{
+      --box-shadow: 0px;
+      border: 1px solid gray;
+      border-radius: 12px;
+      height: 30px;
+      width: 500px;
+      padding-left: 40px;
+      
+
+
+  }
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+   
+}
+  .cat-text{
+      display: inline-block;
+      font-size: smaller;
+      align-items: center;
+      font-family: "Quicksand";
+      width: 100px;
+      text-align: center;
+  }
+
+  .no-shadow {
+    box-shadow: none !important;
+
+  }

@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listYourBusiness</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <h2 (click)="presentPopover()">Create A New Acccount</h2>
+  <form [formGroup]="salonRegistration" (ngSubmit)="submit()" class="form">
+    <div>
+
+
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Salon Name </ion-label>
+        <ion-input style="font-family: Lato;" type="text" formControlName="salon_title" inputmode="text"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.salon_title">
+        <ng-container *ngIf="salon_title.hasError(error.type) && (salon_title.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Email</ion-label>
+        <ion-input style="font-family: Lato;" formControlName="email" inputmode="email"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.email">
+        <ng-container *ngIf="email.hasError(error.type) && (email.dirty)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" position="floating">Phone</ion-label>
+        <ion-input style="font-family: Lato;" formControlName="mobile" inputmode="phone"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.mobile">
+        <ng-container *ngIf="mobile.hasError(error.type) &&(mobile.dirty) ">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+      <ion-list >
+      <ion-list formGroupName="address">
+        <ion-item style="padding-top: 10px;">
+        <ion-label class="label" postion="floating">State</ion-label>
+        <ion-select value="" okText="Okay" cancelText="Dismiss" formControlName="state" >
+          <ion-select-option  value="Delhi">Delhi</ion-select-option>
+          <ion-select-option value="Rajasthan">Rajasthan</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label" postioon="floating">City</ion-label>
+        <ion-select value="" okText="Okay" cancelText="Dismiss" formControlName="city" >
+          <ion-select-option  value="New Delhi">New Delhi</ion-select-option>
+          <ion-select-option value="Jaipur">Jaipur</ion-select-option>
+        </ion-select>
+        </ion-item>
+        <ion-item style="padding-top: 10px;">
+          <ion-label class="label" position="floating">Street </ion-label>
+          <ion-input style="font-family: Lato;" type="text" formControlName="street" inputmode="text"></ion-input>
+        </ion-item>
+          <ion-item style="padding-top: 10px;">
+          <ion-label class="label" position="floating">Pincode </ion-label>
+          <ion-input style="font-family: Lato;" type="text" formControlName="zip" inputmode="text"></ion-input>
+        </ion-item>
+      </ion-list >
+      <ion-item>
+        <ion-radio-group value="Men" formControlName="category">
+          <ion-list-header>
+            <ion-label>Select category</ion-label>
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>Men's</ion-label>
+            <ion-radio slot="start" value="Men"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Women</ion-label>
+            <ion-radio slot="start" value="Women"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Unisex</ion-label>
+            <ion-radio slot="start" value="Unisex"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-item>
+  
+      <ion-item style="padding-top: 10px;">
+        <ion-label class="label">Services</ion-label>
+        <div class="flex-container">
+          <div *ngFor="let service of servicesArr; let i=index;">
+            <input type="checkbox"  (change)="onCheckboxChange($event)" [value]="service.name">
+            {{servicesArr[i].name}}
+          </div>
+        </div>
+      </ion-item>
+      </ion-list>
+     
+      <ion-label>Timings</ion-label> 
+      <div formArrayName="timings" *ngFor= "let time of salonRegistration.controls.timings.controls; let i = index;"> 
+        <ion-row   [formGroupName]="i">
+          
+          <ion-col>
+           {{timings[i].day}}
+          </ion-col>
+          <ion-col size='3'>
+            <ion-item>
+              <ion-label>Opens At</ion-label>
+                <ion-select formControlName="open" interface="popover">
+                 <ion-select-option  *ngFor="let time of timingsData ; let i = index" >{{time}}</ion-select-option> 
+                </ion-select>
+              </ion-item>
+          </ion-col>
+          <ion-col size="3">
+            <ion-item>
+              <ion-label>Closes At</ion-label>
+              <ion-select formControlName="close" interface="popover">
+                <ion-select-option  *ngFor="let time of timingsData ; let i = index" >{{time}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        
+        </ion-row>
+        </div>
+ 
+    </div>
+      <ion-button type="submit" expand="block">
+        Register
+      </ion-button>
+
+     
+  
+  </form>
+</ion-content>

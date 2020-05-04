@@ -1,0 +1,140 @@
+
+  <ion-toolbar no-shadow class="header" color=" ">
+     
+      <ion-buttons slot="start" class="hide-sm-up">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+
+      <ion-item style="padding-left: 80px; margin-top: -25px; width: 300px; color:#582C93;">
+        <ion-label > Select location</ion-label>
+        <ion-select cancelText="Nah" okText="Okay!">
+          <ion-select-option value="bacon">New Delhi</ion-select-option>
+          <ion-select-option value="olives">Jaipur</ion-select-option>
+          <ion-select-option value="xcheese">Chandigarh</ion-select-option>
+          <ion-select-option value="peppers">Gurugram</ion-select-option>
+        </ion-select>
+      </ion-item>
+    <!-- <ion-title  style="padding-left: 80px;">Location</ion-title>
+  -->
+  
+      <ion-row slot="end" style="padding-right: 40px ; margin-top: -12px; ">
+        
+        <ion-col (click)="goToListBussiness()" class="header-buttons" size="auto">
+          List your business
+        </ion-col>
+        <ion-col (click)="presentModal('1')"  class="header-buttons" size="auto">
+          Sign Up
+        </ion-col>
+        <ion-col (click)="presentModal('2')"  class="header-buttons" size="auto">
+          <fa-icon style="color: black;" [icon]="faUser"></fa-icon>
+          Login
+        </ion-col>
+      </ion-row>
+ 
+  </ion-toolbar>
+  <ion-toolbar class="no-shadow" color=" ">
+
+      <img style="margin-left: 40px; position: relative; padding-top: 10px ; padding-bottom: -10px;" src="../../assets/icon/logo3.png" alt="">
+   
+
+    <ion-row slot="end" style="padding-right: 40px;">
+      <ion-col>
+        <ion-row>
+          <ion-col style="padding-top: 8px;">
+            <fa-icon  style="position: absolute; padding-left: 10px; padding-top: 4px; size: 1px;" [icon]="searchIcon" ></fa-icon>
+            <input class="search" type="text" [value]="test"  >
+          </ion-col>
+          <ion-col>
+            <ion-button size="small">Search</ion-button>
+          </ion-col>
+        </ion-row>
+      
+       
+        
+         <!-- <ion-searchbar animated></ion-searchbar> -->
+      </ion-col>
+  
+    </ion-row>
+    
+</ion-toolbar>
+
+<ion-item-divider style="z-index: -1; margin-top: -25px;">
+</ion-item-divider>
+<ion-content [ngStyle]="trans===true ? {'opacity':0.5} : {'opacity':1}">
+ 
+  <ion-grid >
+    <ion-row >
+      <ion-col *ngFor="let cat of categories ; let index=i " (click)="goToEvents(cat.id)" text-center  size-xs="2" size-sm="2" size-md="1.3" >
+      
+          <div style="margin-left:35px;">
+            <ion-img (click)="goToAllOffers()" style=" width: 30px;"  [src]='cat.src'></ion-img>
+          </div>
+          <div class="cat-text">
+          
+            <p style="font-family: Quicksand;"> 
+              {{ cat.name }} 
+            </p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-slides style="height: 200px;" pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img src="../../assets/new.jpg" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/new1.jpg" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/new2.jpg" alt="">
+    </ion-slide>
+  </ion-slides>
+ 
+  <ion-item-divider>
+  </ion-item-divider>
+  <div  style="margin-left : 100px ;">
+    <h1 style="color: #ef7672;">Parlours & Salons</h1>
+  </div>
+    <ion-grid>
+       
+ 
+      <ion-row style="padding: 0px 70px 0px 80px;" >
+   
+        <ion-col (click)="goToSingleParlour()" size-md ="3" size-xs="6" size-sm="6" *ngFor="let cat of salonData ; let i = index" >
+         <ion-card [ngStyle]=" i < 8 ? {'display': show} : {'display': hide}"> 
+          <img src="../../assets/1.jpg"/>
+          <ion-card-header>
+            <ion-card-subtitle>Punjabi Bagh</ion-card-subtitle>
+            <ion-card-title>Gitanjali Salon</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-item-divider>
+
+              </ion-item-divider>
+              <ion-row>
+                <ion-col>
+                  ₹ 450
+                </ion-col>
+                <ion-col>
+
+                </ion-col>
+                <ion-col >
+                  50% Off
+                </ion-col>
+              
+              </ion-row>
+           
+          </ion-card-content>
+          </ion-card>
+        </ion-col>
+    
+      </ion-row>
+    
+    </ion-grid>
+    <ion-button *ngIf="toggleShowMore===true && categories.length>8"  (click)="showMore()">Show More</ion-button>
+    <ion-button *ngIf="toggleShowMore===false"  (click)="showLess()">Show Less</ion-button>
+    <app-footer [data] ="'rishabh'"></app-footer>
+
+</ion-content>
